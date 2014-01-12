@@ -1,0 +1,29 @@
+[user]
+	name = ifthikhan
+	email = iftecan2000@gmail.com
+
+[merge]
+	tool = vimdiff
+
+[core]
+    editor = vim
+	excludesfile = /home/ifthikhan/.gitignore_global
+
+
+[color]
+    ui =  auto
+	status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+
+[alias]
+    di = diff
+    st = status
+    co = commit
+    ch = checkout
+    br = branch
+    ad = add
+    p  = push
+    pu = pull
+
