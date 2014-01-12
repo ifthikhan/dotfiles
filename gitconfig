@@ -7,16 +7,18 @@
 
 [core]
     editor = vim
-	excludesfile = /home/ifthikhan/.gitignore_global
-
+	excludesfile = ~/.gitignore_global
 
 [color]
     ui =  auto
 	status = auto
-	branch = auto
 	diff = auto
 	interactive = auto
 
+[color "branch"]
+        current = red
+        local = yellow
+        remote = green
 [alias]
     di = diff
     st = status
@@ -26,4 +28,5 @@
     ad = add
     p  = push
     pu = pull
+    today = diff @{yesterday}.. --stat
 
