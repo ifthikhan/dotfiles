@@ -1,0 +1,11 @@
+# Add "Bin" to path
+PATH=~/Bin:$PATH
+
+# Aliases
+alias ee=exit
+alias s=screen
+alias sl=screen -list
+alias reload!='. ~/.zshrc'
+alias g=git
+
+# vim: set ft=sh:
