@@ -1,11 +1,21 @@
 # Add "Bin" to path
 PATH=~/Bin:$PATH
 
+# Absolute path to this script, e.g. /home/user/bin/foo.sh
+MYRC=$(readlink -f "$0")
+echo "MYRC path: $MYRC"
+
 # Aliases
+alias editmyrc="vim $MYRC"
 alias ee=exit
 alias s=screen
-alias sl=screen -list
-alias reload!='. ~/.zshrc'
+alias sl='screen -list'
+alias reload='. ~/.zshrc'
 alias g=git
+alias v=vim
+alias m=man
+
+# Exporting for lightline
+export TERM=xterm-256color
 
 # vim: set ft=sh:
