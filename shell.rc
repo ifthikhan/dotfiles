@@ -1,8 +1,21 @@
 # Add "Bin" to path
 PATH=~/Bin:$PATH
 
+PLATFORM='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   PLATFORM='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   PLATFORM='mac'
+fi
+
 # Absolute path to this script, e.g. /home/user/bin/foo.sh
-MYRC=$(readlink -f "$0")
+echo "Current platform $PLATFORM"
+if [[ $PLATFORM == 'mac' ]]; then
+    MYRC=$(greadlink -f "$0")
+else
+    MYRC=$(readlink -f "$0")
+fi
 echo "MYRC path: $MYRC"
 
 # Aliases
