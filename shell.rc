@@ -18,4 +18,10 @@ alias m=man
 # Exporting for lightline
 export TERM=xterm-256color
 
+# Useful functions
+# LAN ip.
+alias ipl='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d" " -f2'
+# Public ip
+alias ipx="curl http://bot.whatismyipaddress.com | grep -E '[0-9.]+'"
+
 # vim: set ft=sh:
