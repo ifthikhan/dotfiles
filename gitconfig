@@ -1,19 +1,19 @@
 [user]
-	name = ifthikhan
-	email = iftecan2000@gmail.com
+    name = ifthikhan
+    email = iftecan2000@gmail.com
 
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 
 [core]
     editor = vim
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [color]
     ui =  auto
-	status = auto
-	diff = auto
-	interactive = auto
+    status = auto
+    diff = auto
+    interactive = auto
 
 [color "branch"]
         current = red

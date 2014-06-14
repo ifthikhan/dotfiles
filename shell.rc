@@ -1,5 +1,9 @@
 # Add "Bin" to path
 PATH=~/Bin:$PATH
+EDITOR=vim
+
+# Set the readline mode to vim
+set -o vi
 
 PLATFORM='unknown'
 unamestr=`uname`
@@ -12,6 +16,7 @@ fi
 # Absolute path to this script, e.g. /home/user/bin/foo.sh
 echo "Current platform $PLATFORM"
 if [[ $PLATFORM == 'mac' ]]; then
+    #export PATH='/usr/local/bin:$PATH'
     MYRC=$(greadlink -f "$0")
 else
     MYRC=$(readlink -f "$0")
@@ -36,5 +41,13 @@ export TERM=xterm-256color
 alias ipl='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d" " -f2'
 # Public ip
 alias ipx="curl http://bot.whatismyipaddress.com | grep -E '[0-9.]+'"
+
+# Some settings to prefer homebrew paths in case it exists:
+# This is important for python.
+if which -s brew ; then
+    #PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+    PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+    #PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+fi
 
 # vim: set ft=sh:
