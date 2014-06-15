@@ -20,16 +20,15 @@ bindkey "^B"      backward-char                        # ctrl-b
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
     echo '○'
-    #→
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
 ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
-ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
+ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]"
 ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
 
 function parse_git_dirty() {
-    gitst=$(=git status 2> /dev/null)
+    gitst="$(git status 2> /dev/null)"
     if [[ ${gitst} =~ 'nothing to commit' ]]; then
         echo $ZSH_THEME_GIT_PROMPT_CLEAN
     else
@@ -46,7 +45,7 @@ function git_prompt_info() {
   echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-# Prompt customization
-export PS1="
+PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} in %{$fg[yellow]%}%m%{$reset_color%} at %{$fg[red]%}%~%{$reset_color%} on %D{%a, %b} %@ (%h)
-%{$fg[green]%}$(git_prompt_info) $(prompt_char)%{$reset_color%} "
+$(git_prompt_info) %{$fg[green]%}$(prompt_char)%{$reset_color%} '
+setopt promptsubst
