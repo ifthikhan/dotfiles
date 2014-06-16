@@ -32,6 +32,7 @@ alias reload='. ~/.zshrc'
 alias g=git
 alias v=vim
 alias m=man
+alias home='cd ~'
 
 # Exporting for lightline
 export TERM=xterm-256color
