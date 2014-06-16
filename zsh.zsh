@@ -1,6 +1,6 @@
 # Load colors
 autoload -U colors && colors
-autoload -U compinstall && compinstall
+#autoload -U compinstall && compinstall
 
 # Key bindings
 # To see the key combo you want to use just do:
@@ -46,7 +46,16 @@ function git_prompt_info() {
   echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
+function custom_pwd() {
+    currentpath="$(pwd)"
+    if [[ $HOME == $currentpath ]]; then
+        echo "⌂"
+    else
+        echo $currentpath
+    fi
+}
+
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} in %{$fg[yellow]%}%m%{$reset_color%} at %{$fg[red]%}%~%{$reset_color%} on %D{%a, %b} %@ (%h)
+%{$fg[magenta]%}%n%{$reset_color%} in %{$fg[yellow]%}%m%{$reset_color%} at %{$fg[red]%}$(custom_pwd)%{$reset_color%} on %D{%a, %b} %@ (%h)
 $(git_prompt_info) %{$fg[green]%}$(prompt_char)%{$reset_color%} '
 setopt promptsubst
