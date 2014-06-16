@@ -1,5 +1,6 @@
 # Load colors
 autoload -U colors && colors
+autoload -U compinstall && compinstall
 
 # Key bindings
 # To see the key combo you want to use just do:
