@@ -46,16 +46,12 @@ function git_prompt_info() {
   echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-function custom_pwd() {
-    currentpath="$(pwd)"
-    if [[ $HOME == $currentpath ]]; then
-        echo "⌂"
-    else
-        echo $currentpath
-    fi
+function collapse_pwd {
+    echo $(pwd | sed -e "s,^$HOME,⌂,")
 }
 
+
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} in %{$fg[yellow]%}%m%{$reset_color%} at %{$fg[red]%}$(custom_pwd)%{$reset_color%} on %D{%a, %b} %@ (%h)
+%{$fg[magenta]%}%n%{$reset_color%} in %{$fg[yellow]%}%m%{$reset_color%} at %{$fg[red]%}$(collapse_pwd)%{$reset_color%} on %D{%a, %b} %@ (%h)
 $(git_prompt_info) %{$fg[green]%}$(prompt_char)%{$reset_color%} '
 setopt promptsubst
